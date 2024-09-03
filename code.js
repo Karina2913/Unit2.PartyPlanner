@@ -1,4 +1,4 @@
-const COHORT = "REPLACE_ME!";
+const COHORT = "2406-FTB-MT-WEB-PT";
 const API_URL = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/${COHORT}/parties`;
 
 const state = {
