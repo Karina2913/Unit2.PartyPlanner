@@ -21,7 +21,14 @@ render();
 async function getParties() {
     try {
         const response = await fetch(API_URL, {
-            method: "GET"
+            method: "GET",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                name: addPartiesForm.name.value,
+                date: addPartiesForm.date.value,
+                location: addPartiesForm.location.value,
+                description: addPartiesForm.description.value,
+            })
         });
         const result = await response.json();
         state.parties = result;
@@ -29,11 +36,6 @@ async function getParties() {
         console.error(error);
     }
 }
-/*
-const response = await fetch (`${API_URL}/${id}`, {
-            method: "DELETE"
-        });
-*/
 
 //render parties
 function renderParties() {
@@ -62,6 +64,7 @@ function renderParties() {
 }
 
 //post request based on form data
+// entering event parameter --> can event hold name, date, location, description?
 async function addParty(event) {
     event.preventDefault();
 
